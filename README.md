@@ -48,29 +48,11 @@ Modify file `build-default.properties` with your environment data.
 
 INSTALLATION
 ------------
-### Automation
 1. You only need to run install file follow command in project root directory
 
         $./install
 
 2. The project is installed successful if you can see this message.
-
-        BUILD FINISHED
-
-### Semi-Automation
-1. You need install project packages dependency by run command in project root directory
-
-        $composer install
-
-2. You can start build with phing in project root directory.
-
-        $vendor/phing/phing/bin/phing
-
-3. If error occurs during building process, you may want to try to run build command with root permission.
-
-        $sudo vendor/phing/phing/bin/phing
-
-4. The project is installed successful if you can see this message.
 
         BUILD FINISHED
 
