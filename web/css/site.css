@@ -1,0 +1,216 @@
+html, body {
+  height: 100%;
+}
+
+.wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -60px;
+  padding: 0 0 60px;
+}
+
+.main {
+  padding: 20px 15px;
+}
+
+.sidebar {
+  background: #3F4649;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 0;
+}
+
+.logo {
+  color: #fff;
+  font-size: 20px;
+  padding: 15px;
+  margin: 0;
+  text-align:center;
+}
+
+.s-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.s-nav .cate-all {
+  background-color: #2d2f31;
+}
+
+.s-nav li {
+  border-top: 1px solid #999;
+}
+
+.s-nav li a {
+  display: block;
+  color: #999;
+  font-size: 16px;
+  padding: 8px 10px;
+  text-decoration: none;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.s-nav li a:hover {
+  background: #999;
+  color: #fff;
+}
+
+.cate-feed a.active {
+  color: #5cb85c;;
+}
+
+.subscribe {
+  position: absolute;
+  left:  0;
+  bottom:  30px;
+  width:  100%;
+  text-align: center;
+}
+
+.footer {
+  height: 60px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+.jumbotron {
+  text-align: center;
+  background-color: transparent;
+}
+
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+.not-set {
+  color: #c55;
+  font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  padding-left: 5px;
+}
+
+a.asc:after {
+  content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+  content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+  content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+  content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+  content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+  content: "\e156";
+}
+
+.grid-view th {
+  white-space: nowrap;
+}
+
+.hint-block {
+  display: block;
+  margin-top: 5px;
+  color: #999;
+}
+
+.error-summary {
+  color: #a94442;
+  background: #fdf7f7;
+  border-left: 3px solid #eed3d7;
+  padding: 10px 20px;
+  margin: 0 0 15px 0;
+}
+
+/* align the logout "link" (button in form) of the navbar */
+.nav li>form>button.logout {
+  padding: 15px;
+  border: none;
+}
+
+@media ( max-width :767px) {
+  .nav li>form>button.logout {
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding: 10px 15px;
+  }
+}
+
+.nav>li>form>button.logout:focus, .nav>li>form>button.logout:hover {
+  text-decoration: none;
+}
+
+.nav>li>form>button.logout:focus {
+  outline: none;
+}
+
+/*
+* === FEED PAGE ===
+*/
+
+.item {
+  border-left: 3px solid #337ab7;
+  padding: 10px 20px;
+}
+
+.item:nth-child(2n){
+  background-color: #e8e8e8;
+}
+
+.item-title{
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.item-title a{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.pub-date{
+  color: #111111;
+  font-size: 11px;
+  font-style: italic;
+  white-space: nowrap;
+  margin-left: 5px;
+}
+
+.item-actions{
+  float:right;
+}
+
+.item-source{
+  font-size: 11px;
+  color: #8d8d8c;
+}
+
+.item-description {
+  margin-top: 10px;
+}

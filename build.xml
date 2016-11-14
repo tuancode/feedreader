@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Feedreader" default="build">
+
+    <!--
+        Usage:
+        To build the project, verify the settings in build-default.properties,
+        then run:
+        $ php vendor/phing/phing/bin/phing
+
+        If needed, properties can be set on the command-line as well:
+        $ php vendor/phing/phing/bin/phing -Dapp.db.password=the_password
+    -->
+
+    <property file="build-default.properties" />
+    <if>
+        <available file="build.properties" />
+        <then>
+            <property file="build.properties" override="true" />
+        </then>
+    </if>
+
+    <target name="build">
+        <copy todir="./" overwrite="true">
+            <mapper type="glob" from="*.template.php" to="*.php"/>
+            <fileset dir="./">
+                <include name="config/**" />
+                <include name="web/**" />
+            </fileset>
+            <filterchain>
+                <replacetokens begintoken="##" endtoken="##">
+                    <token key="APP_ENV" value="${app.env}" />
+                    <token key="DB_HOST" value="${app.db.host}" />
+                    <token key="DB_USER" value="${app.db.user}" />
+                    <token key="DB_PASSWORD" value="${app.db.password}" />
+                    <token key="DB_NAME" value="${app.db.name}" />
+                    <token key="LOG_PATH" value="${app.log.path}" />
+                </replacetokens>
+            </filterchain>
+        </copy>
+        <phingcall target="writable_directories" />
+        <phingcall target="prepare-databases" />
+        <phingcall target="migrate" />
+    </target>
+    <target name="writable_directories" hidden="true">
+        <if>
+            <or>
+                <equals arg1="${build.freebsd}" arg2="true" />
+                <equals arg1="${build.freebsd}" arg2="1" />
+            </or>
+            <then>
+                <echo message="FreeBSD" />
+                <symlink target="../runtime/web" link="./web/assets" overwrite="true" />
+            </then>
+            <else>
+                <echo message="Not FreeBSD" />
+                <mkdir dir="./web/assets" mode="0777" />
+                <chmod file="./web/assets" mode="0777" />
+                <chmod file="./runtime" mode="0777" />
+            </else>
+        </if>
+    </target>
+    <target name="prepare-databases">
+       <pdo url="${app.db.driver}:host=${app.db.host}" userId="${app.db.user}" 
+           password="${app.db.password}" encoding="utf8"  onerror="abort">
+            CREATE DATABASE IF NOT EXISTS `${app.db.name}`;
+       </pdo>
+   </target>
+    <target name="migrate" hidden="true">
+        <exec command="&quot;${php.interpreter}&quot; yii migrate --interactive=0" logoutput="true" />
+    </target>
+</project>
