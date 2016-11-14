@@ -39,7 +39,7 @@
         </copy>
         <phingcall target="writable_directories" />
         <phingcall target="prepare_database" />
-        <phingcall target="migrate" />
+        <phingcall target="migrate_database" />
     </target>
     <target name="writable_directories" hidden="true">
         <if>
@@ -59,13 +59,13 @@
             </else>
         </if>
     </target>
-    <target name="prepare_database">
+    <target name="prepare_database" hidden="true">
        <pdo url="${app.db.driver}:host=${app.db.host}" userId="${app.db.user}" 
            password="${app.db.password}" encoding="utf8"  onerror="abort">
             CREATE DATABASE IF NOT EXISTS `${app.db.name}`;
        </pdo>
    </target>
-    <target name="migrate" hidden="true">
+    <target name="migrate_database" hidden="true">
         <exec command="&quot;${php.interpreter}&quot; yii migrate --interactive=0" logoutput="true" />
     </target>
 </project>
