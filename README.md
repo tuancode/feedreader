@@ -71,7 +71,7 @@ You can monitor any console message response in log file. Ex.
 
 You can access website by route
 
-    http://localhost/feeds-reader/src/web/
+    http://localhost/feedreader/web/
 
 In addtion, you also can:
 
