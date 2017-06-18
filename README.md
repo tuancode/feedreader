@@ -99,4 +99,4 @@ In addition, it also used some packages from:
 
 AUTHOR
 ------
-Tuan Vu tuanvu.se@gmail.com
+Tuan Vu tuancode@icloud.com
